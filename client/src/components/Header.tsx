@@ -22,25 +22,23 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md shadow-md">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("#hero")}
-              className="text-2xl font-bold text-primary hover-elevate active-elevate-2 px-2 py-1 rounded-md"
-              data-testid="logo-link"
-            >
-              BO-TEX
-            </button>
-          </div>
+          <button
+            onClick={() => scrollToSection("#hero")}
+            className="text-2xl md:text-3xl font-display font-bold text-primary hover-elevate active-elevate-2 px-3 py-2 rounded-md"
+            data-testid="logo-link"
+          >
+            BO-TEX
+          </button>
 
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="px-4 py-2 text-sm font-medium hover-elevate active-elevate-2 rounded-md"
+                className="px-4 py-2 text-sm font-semibold text-secondary-foreground hover-elevate active-elevate-2 rounded-md transition-colors"
                 data-testid={`link-${link.name.toLowerCase()}`}
               >
                 {link.name}
@@ -51,6 +49,7 @@ export default function Header() {
           <div className="hidden md:block">
             <Button
               onClick={() => scrollToSection("#contact")}
+              className="font-semibold"
               data-testid="button-contact-header"
             >
               Свържете се
@@ -58,7 +57,7 @@ export default function Header() {
           </div>
 
           <button
-            className="md:hidden p-2 hover-elevate active-elevate-2 rounded-md"
+            className="md:hidden p-2 text-secondary-foreground hover-elevate active-elevate-2 rounded-md"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -68,20 +67,20 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-card border-t">
-          <div className="px-4 py-4 space-y-2">
+        <div className="md:hidden bg-secondary border-t border-secondary-foreground/10">
+          <div className="px-6 py-6 space-y-3">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-4 py-2 text-sm font-medium hover-elevate active-elevate-2 rounded-md"
+                className="block w-full text-left px-4 py-3 text-base font-semibold text-secondary-foreground hover-elevate active-elevate-2 rounded-md"
                 data-testid={`mobile-link-${link.name.toLowerCase()}`}
               >
                 {link.name}
               </button>
             ))}
             <Button
-              className="w-full mt-4"
+              className="w-full mt-4 font-semibold"
               onClick={() => scrollToSection("#contact")}
               data-testid="button-contact-mobile"
             >

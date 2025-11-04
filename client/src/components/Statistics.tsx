@@ -1,37 +1,30 @@
-import { Package, Users, Award, Clock } from "lucide-react";
+import { Droplets, Users, Award, Clock } from "lucide-react";
 
 export default function Statistics() {
   const stats = [
-    {
-      icon: Package,
-      number: "950+",
-      label: "Продукта в каталога",
-    },
-    {
-      icon: Users,
-      number: "500+",
-      label: "Доволни клиенти",
-    },
-    {
-      icon: Award,
-      number: "15+",
-      label: "Години опит",
-    },
-    {
-      icon: Clock,
-      number: "24/7",
-      label: "Техническа поддръжка",
-    },
+    { icon: Droplets, number: "1800+", label: "Изградени сондажи" },
+    { icon: Users, number: "500+", label: "Доволни клиенти" },
+    { icon: Award, number: "15+", label: "Години опит" },
+    { icon: Clock, number: "24/7", label: "Техническа поддръжка" },
   ];
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+    <section className="py-20 md:py-24 lg:py-32 bg-secondary relative overflow-hidden">
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
+          backgroundSize: '24px 24px',
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+        <div className="text-center mb-16">
+          <div className="w-20 h-1 bg-primary mb-6 mx-auto transform rotate-2" />
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-secondary-foreground">
             Доказани Резултати
           </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/90">
+          <p className="text-xl md:text-2xl text-secondary-foreground/80 font-semibold">
             Цифрите говорят сами за себе си
           </p>
         </div>
@@ -40,12 +33,17 @@ export default function Statistics() {
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div key={index} className="text-center" data-testid={`statistic-${index}`}>
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 mb-4">
-                  <Icon className="w-8 h-8" />
+              <div key={index} className="text-center relative" data-testid={`statistic-${index}`}>
+                {index < 3 && (
+                  <div className="hidden md:block absolute top-1/2 -right-6 w-px h-24 bg-secondary-foreground/20 transform -translate-y-1/2" />
+                )}
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 mb-6 border-2 border-primary/40">
+                  <Icon className="w-10 h-10 text-primary" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-base md:text-lg text-primary-foreground/80">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-3 text-primary">
+                  {stat.number}
+                </div>
+                <div className="text-base md:text-lg font-semibold text-secondary-foreground/70">
                   {stat.label}
                 </div>
               </div>
