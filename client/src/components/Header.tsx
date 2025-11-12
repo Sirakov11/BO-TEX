@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "./ui/assets/logo2.jpg"; // ✅ Correct path
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function Header() {
             className="text-2xl md:text-3xl font-display font-bold text-primary hover-elevate active-elevate-2 px-3 py-2 rounded-md"
             data-testid="logo-link"
           >
-            BO-TEX
+            <img src={logo} alt="BO-TEX" className="h-10" /> {/* ✅ Use imported logo */}
           </button>
 
           <nav className="hidden md:flex items-center space-x-2">
